@@ -9,13 +9,20 @@ export default async ({ req, res, log }) => {
   client.setKey(req.headers["x-appwrite-key"]);
 
   const databases = new Databases(client);
+  const tables = new TablesDB(client);
 
-  const listado = await databases.listDocuments({
+  const listadoDocuments = await databases.listDocuments({
     databaseId: "root",
     collectionId: "time",
   });
 
-  log({ listado });
+  const listadoRows = await tables.listRows({
+    databaseId: "root",
+    collectionId: "time",
+  });
+
+  log({ listadoDocuments });
+  log({ listadoRows });
 
   return res.json({ ok: true });
 };
