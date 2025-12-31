@@ -18,7 +18,7 @@ export default async ({ req, res, log }) => {
 
   const listadoRows = await tables.listRows({
     databaseId: "root",
-    collectionId: "time",
+    tableId: "time",
   });
 
   log({ listadoDocuments });
